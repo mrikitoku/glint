@@ -127,8 +127,7 @@ trait SystemTest extends ScalaFutures {
     try {
       testCode(masterActor)
     } finally {
-      masterSystem.shutdown()
-      masterSystem.awaitTermination()
+      masterSystem.terminate()
     }
   }
 
@@ -142,8 +141,7 @@ trait SystemTest extends ScalaFutures {
     try {
       testCode(serverActor)
     } finally {
-      serverSystem.shutdown()
-      serverSystem.awaitTermination()
+      serverSystem.terminate()
     }
   }
 
@@ -162,8 +160,7 @@ trait SystemTest extends ScalaFutures {
     } finally {
       servers.foreach {
         case (s, a) =>
-          s.shutdown()
-          s.awaitTermination()
+          s.terminate()
       }
     }
 
